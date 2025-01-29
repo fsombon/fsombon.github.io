@@ -1,16 +1,16 @@
-// Initialize variables
-let stations = [
-    { name: "Ayala", image: "https://i.nuuls.com/Usa6W.png" },
-    { name: "Carriedo", image: "https://i.nuuls.com/BxokT.png" },
-    { name: "FTI", image: "https://i.nuuls.com/py4s3.png" },
-    // Add more stations here
-];
-
 let currentStationIndex = 0;
 let attemptsLeft = 3;
 let score = 0;
 let highScores = [];
 let isAdminLoggedIn = false;
+
+// Initialize variables
+let stations = [
+    { name: "Ayala", image: "./images/Ayala.png" },
+    { name: "Carriedo", image: "./images/Carriedo.png" },
+    { name: "FTI", image: "./images/FTI.png" },
+    // Add more stations here
+];
 
 // Function to shuffle the stations array
 function shuffleArray(array) {
@@ -88,7 +88,7 @@ function resetHighScores() {
 
 // Function to end the round
 function endRound() {
-    document.getElementById("feedback").textContent = `You've guessed all stations! Your score is ${score}.`;
+    document.getElementById("congrats").textContent = `You've guessed all stations! Your score is ${score}.`;
     document.getElementById("name-modal").style.display = "block";
     document.getElementById("player-name").focus();
 }
