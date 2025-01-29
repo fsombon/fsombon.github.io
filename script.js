@@ -149,6 +149,7 @@ document.getElementById("login-submit").addEventListener("click", () => {
     const adminPassword = document.getElementById("admin-password").value.trim();
     if (adminPassword === "admin") {
         isAdminLoggedIn = true;
+        document.getElementById("add-station-button").style.display = "block";
         document.getElementById("reset-high-scores").style.display = "block";
         document.getElementById("login-button").style.display = "none";
         document.getElementById("logout-button").style.display = "block";
@@ -162,6 +163,7 @@ document.getElementById("login-submit").addEventListener("click", () => {
 // Add event listener to logout button
 document.getElementById("logout-button").addEventListener("click", () => {
     isAdminLoggedIn = false;
+    document.getElementById("add-station-button").style.display = "none";
     document.getElementById("reset-high-scores").style.display = "none";
     document.getElementById("login-button").style.display = "block";
     document.getElementById("logout-button").style.display = "none";
@@ -173,5 +175,31 @@ document.getElementById("reset-high-scores").addEventListener("click", () => {
         resetHighScores();
     } else {
         alert("You must be logged in as admin to reset high scores!");
+    }
+});
+
+document.getElementById("add-station-button").addEventListener("click", () => {
+    document.getElementById("add-station-modal").style.display = "block";
+});
+
+document.getElementById("add-station-submit").addEventListener("click", () => {
+    const stationName = document.getElementById("station-name").value.trim();
+    const stationImage = document.getElementById("station-image-upload").files[0];
+
+    if (stationName && stationImage) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            const station = {
+                name: stationName,
+                image: reader.result,
+            };
+            stations.push(station);
+            document.getElementById("add-station-modal").style.display = "none";
+            document.getElementById("station-name").value = "";
+            document.getElementById("station-image-upload").value = "";
+        };
+        reader.readAsDataURL(stationImage);
+    } else {
+        alert("Please enter both station name and image.");
     }
 });
