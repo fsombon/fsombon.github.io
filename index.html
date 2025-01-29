@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>traindle</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top-right">
+            <button id="login-button">Login</button>
+            <div id="login-modal" style="display: none;">
+                <h2 id="login-title">Login</h2>
+                <input type="password" id="admin-password" placeholder="Enter password" />
+                <button id="login-submit">Login</button>
+            </div>
+            <button id="reset-high-scores" style="display: none;">Export and Reset High Scores</button>
+            <button id="logout-button" style="display: none;">Logout</button>
+        </div>
+        <h1>Guess the Train Station!</h1>
+        <img id="station-image" src="" alt="Train Station" />
+        <input type="text" id="user-guess" placeholder="Enter station name" />
+        <button id="submit-guess">Submit Guess</button>
+        <p id="feedback"></p>
+        <p id="attempts">Attempts left: <span id="attempts-left">3</span></p>
+    </div>
+    <div id="high-scores" style="display: none;">
+        <h2>High Scores:</h2>
+        <ul id="high-scores-list"></ul>
+    </div>
+    <!-- Add a modal to input the player's name -->
+    <div id="name-modal" style="display: none;">
+        <h2>Enter Your Name:</h2>
+        <input type="text" id="player-name" />
+        <button id="submit-name">Submit</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
