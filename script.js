@@ -203,3 +203,22 @@ document.getElementById("add-station-submit").addEventListener("click", () => {
         alert("Please enter both station name and image.");
     }
 });
+
+
+
+document.getElementById("toggle-side-menu").addEventListener("click", () => {
+    const sideMenu = document.querySelector(".side-menu");
+    if (sideMenu.style.left === "-200px" || sideMenu.style.left === "") {
+        sideMenu.style.left = "0px";
+    } else {
+        sideMenu.style.left = "-200px";
+    }
+    sideMenu.classList.toggle("minimized");
+});
+
+document.getElementById("close-add-station-modal").addEventListener("click", () => {
+    document.getElementById("add-station-modal").style.display = "none";
+});
+
+
+

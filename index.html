@@ -6,10 +6,16 @@
     <title>traindle</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="./images/trainicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="top-right">
+        
+        <div class="side-menu">
+            <button id="toggle-side-menu">
+                <i class="fas fa-angle-double-left"></i>
+            </button>
             <button id="login-button">Login</button>
             <div id="login-modal" style="display: none;">
                 <h2 id="login-title">Login</h2>
@@ -41,10 +47,15 @@
     </div>
     <!-- Add a modal to add train stations -->
     <div id="add-station-modal" style="display: none;">
-        <h2>Add Train Station:</h2>
-        <input type="text" id="station-name" placeholder="Enter station name" />
-        <input type="file" id="station-image-upload" accept="image/*" />
-        <button id="add-station-submit">Add Station</button>
+        <div class="modal-header">
+            <h2>Add Train Station:</h2>           
+        </div>
+        <div class="modal-body">
+            <input type="text" id="station-name" placeholder="Enter station name" />
+            <input type="file" id="station-image-upload" accept="image/*" />
+            <button id="add-station-submit">Add Station</button>
+            <button id="close-add-station-modal" class="close-button">Cancel</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
