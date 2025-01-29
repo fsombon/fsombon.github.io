@@ -6,9 +6,9 @@ let isAdminLoggedIn = false;
 
 // Initialize variables
 let stations = [
-    { name: "Ayala", image: "./images/Ayala.png" },
-    { name: "Carriedo", image: "./images/Carriedo.png" },
-    { name: "FTI", image: "./images/FTI.png" },
+    { name: "Ayala", image: "./images/ayalaresized.png" },
+    { name: "Carriedo", image: "./images/carriedoresized.png" },
+    { name: "FTI", image: "./images/ftiresized.png" },
     // Add more stations here
 ];
 
@@ -88,7 +88,7 @@ function resetHighScores() {
 
 // Function to end the round
 function endRound() {
-    document.getElementById("congrats").textContent = `You've guessed all stations! Your score is ${score}.`;
+    document.getElementById("congrats").textContent = `Thank you for playing! Your score is ${score}.`;
     document.getElementById("name-modal").style.display = "block";
     document.getElementById("player-name").focus();
 }
