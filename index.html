@@ -1,62 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>traindle</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="./images/trainicon.png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Traindle</title>
+    <link rel="icon" href="./images/trainicon.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        
-        <div class="side-menu">
-            <button id="toggle-side-menu">
-                <i class="fas fa-angle-double-left"></i>
-            </button>
-            <button id="login-button">Login</button>
-            <div id="login-modal" style="display: none;">
-                <h2 id="login-title">Login</h2>
-                <input type="password" id="admin-password" placeholder="Enter password" />
-                <button id="login-submit">Login</button>
-            </div>
-            
-            <button id="add-station-button" style="display: none;">Add Train Station</button>
-            <button id="reset-high-scores" style="display: none;">Export and Reset High Scores</button>
-            <button id="logout-button" style="display: none;">Logout</button>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen bg-gray-100 font-poppins">
+    <div class="flex flex-col items-center p-8 space-y-6">
+      <!-- Side Menu -->
+      <div class="relative w-full max-w-md">
+        <!-- <button id="toggle-side-menu" class="absolute left-2 top-2 bg-blue-500 text-white p-2 rounded-full shadow-md hover:bg-blue-600">
+          <i class="fas fa-angle-double-left"></i>
+        </button> -->
+        <div class="bg-white p-4 rounded-lg shadow-md space-y-4">
+          <button id="login-button" class="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600">Login</button>
+
+          <div id="login-modal" class="hidden">
+            <h2 class="text-lg font-bold mb-2">Login</h2>
+            <input type="password" id="admin-password" placeholder="Enter password" class="w-full p-2 border rounded-md mb-2" />
+            <button id="login-submit" class="w-full py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">Submit</button>
+          </div>
+
+          <button id="add-station-button" class="w-full py-2 bg-indigo-500 text-white font-semibold rounded-lg hover:bg-indigo-600 hidden">Add Train Station</button>
+          <button id="reset-high-scores" class="w-full py-2 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-600 hidden">Export & Reset High Scores</button>
+          <button id="logout-button" class="w-full py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 hidden">Logout</button>
         </div>
-        <h1>Guess the Train Station!</h1>
-        <img id="station-image" src="" alt="Train Station" />
-        <input type="text" id="user-guess" placeholder="Enter station name" />
-        <button id="submit-guess">Submit Guess</button>
-        <p id="feedback"></p>
-        <p id="attempts">Attempts left: <span id="attempts-left">3</span></p>
-    </div>
-    <div id="high-scores" style="display: none;">
-        <h2>High Scores:</h2>
-        <ul id="high-scores-list"></ul>
-    </div>
-    <!-- Add a modal to input the player's name -->
-    <div id="name-modal" style="display: none;">
-        <p id="congrats"></p>
-        <h2>Enter Your Name:</h2>
-        <input type="text" id="player-name" />
-        <button id="submit-name">Submit</button>
-    </div>
-    <!-- Add a modal to add train stations -->
-    <div id="add-station-modal" style="display: none;">
-        <div class="modal-header">
-            <h2>Add Train Station:</h2>           
+      </div>
+      <!-- Add Station Modal -->
+      <div id="add-station-modal" class="hidden bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+        <div class="modal-header mb-4">
+          <h2 class="text-xl font-bold">Add Train Station:</h2>
         </div>
-        <div class="modal-body">
-            <input type="text" id="station-name" placeholder="Enter station name" />
-            <input type="file" id="station-image-upload" accept="image/*" />
-            <button id="add-station-submit">Add Station</button>
-            <button id="close-add-station-modal" class="close-button">Cancel</button>
+        <div class="modal-body space-y-4">
+          <input type="text" id="station-name" placeholder="Enter station name" class="w-full p-2 border rounded-md" />
+          <input type="file" id="station-image-upload" accept="image/*" class="w-full p-2 border rounded-md" />
+          <button id="add-station-submit" class="w-full py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">Add Station</button>
+          <button id="close-add-station-modal" class="w-full py-2 bg-gray-400 text-white rounded-lg hover:bg-gray-500">Cancel</button>
         </div>
+      </div>
+
+      <!-- Game Section -->
+      <h1 class="text-3xl font-bold text-center text-gray-700">Guess the Train Station!</h1>
+      <img id="station-image" src="" alt="Train Station" class="w-full max-w-md rounded-lg shadow-md mb-4" />
+
+      <div class="flex flex-col items-center space-y-4 w-full max-w-md">
+        <input type="text" id="user-guess" placeholder="Enter station name" class="w-full p-2 border rounded-md" />
+        <button id="submit-guess" class="w-full py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600">Submit Guess</button>
+        <p id="feedback" class="text-center text-lg text-gray-700"></p>
+        <p id="attempts" class="text-gray-500">Attempts left: <span id="attempts-left">3</span></p>
+      </div>
+
+      <!-- High Scores Section -->
+      <div id="high-scores" class="hidden w-full max-w-md bg-white p-4 rounded-lg shadow-md">
+        <h2 class="text-lg font-bold mb-2">High Scores:</h2>
+        <ul id="high-scores-list" class="list-disc pl-5"></ul>
+      </div>
+
+      <!-- Name Modal -->
+      <div id="name-modal" class="hidden bg-white p-4 rounded-lg shadow-md w-full max-w-md">
+        <p id="congrats" class="text-center text-lg text-green-600"></p>
+        <h2 class="text-xl font-semibold mb-2">Enter Your Name:</h2>
+        <input type="text" id="player-name" class="w-full p-2 border rounded-md mb-2" />
+        <button id="submit-name" class="w-full py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Submit</button>
+      </div>
+
+      
     </div>
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
