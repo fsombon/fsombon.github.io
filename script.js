@@ -99,7 +99,7 @@ loadHighScores();
 // Load a new station on page load
 shuffleArray(stations);
 loadStation();
-
+/*
 // Add event listener to submit guess button
 document.getElementById("submit-guess").addEventListener("click", () => {
     const userGuess = document.getElementById("user-guess").value.trim().toLowerCase();
@@ -120,6 +120,33 @@ document.getElementById("submit-guess").addEventListener("click", () => {
             currentStationIndex++;
             loadStation();
         }
+    }
+    document.getElementById("attempts-left").textContent = attemptsLeft;
+    document.getElementById("user-guess").value = "";
+});
+*/
+// Add event listener to submit guess button
+document.getElementById("submit-guess").addEventListener("click", () => {
+    const userGuess = document.getElementById("user-guess").value.trim().toLowerCase();
+    const correctAnswer = stations[currentStationIndex].name.toLowerCase();
+
+    if (userGuess === correctAnswer) {
+        score++; // Increment score for correct guess
+        document.getElementById("feedback").textContent = "Correct! Next station.";
+        currentStationIndex++;
+        attemptsLeft = 3; // Reset attempts left
+        loadStation();
+        document.getElementById("correct-sound").play(); // Play correct sound effect
+    } else {
+        attemptsLeft--;
+        document.getElementById("feedback").textContent = "Incorrect! Try again.";
+        if (attemptsLeft === 0) {
+            document.getElementById("feedback").textContent = `Game Over! The station was ${stations[currentStationIndex].name}.`;
+            attemptsLeft = 3; // Reset attempts left
+            currentStationIndex++;
+            loadStation();
+        }
+        document.getElementById("wrong-sound").play(); // Play wrong sound effect
     }
     document.getElementById("attempts-left").textContent = attemptsLeft;
     document.getElementById("user-guess").value = "";
@@ -219,6 +246,7 @@ document.getElementById("toggle-side-menu").addEventListener("click", () => {
     }
     sideMenu.classList.toggle("minimized");
 });
+
 
 
 
