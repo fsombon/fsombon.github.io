@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="min-h-screen bg-gray-100 font-poppins">
+  <body class="min-h-screen bg-[#E2F3F4] font-poppins">
     <div class="flex flex-col items-center p-8 space-y-6">
       <!-- Side Menu -->
       <div class="relative w-full max-w-md">
@@ -17,55 +17,54 @@
           <i class="fas fa-angle-double-left"></i>
         </button> -->
         <div class="bg-white p-4 rounded-lg shadow-md space-y-4">
-          <button id="login-button" class="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600">Login</button>
-
+          <button id="login-button" class="w-full py-2 bg-[#6DC7D1] text-white font-poppins rounded-lg hover:bg-[#5EAAB2]">Login</button>
           <div id="login-modal" class="hidden">
-            <h2 class="text-lg font-bold mb-2">Login</h2>
+            <h2 class="text-lg font-poppins mb-2">Login</h2>
             <input type="password" id="admin-password" placeholder="Enter password" class="w-full p-2 border rounded-md mb-2" />
-            <button id="login-submit" class="w-full py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">Submit</button>
+            <button id="login-submit" class="w-full py-2 bg-[#6DC7D1] hover:bg-[#5EAAB2] text-white rounded-lg">Submit</button>
           </div>
 
-          <button id="add-station-button" class="w-full py-2 bg-indigo-500 text-white font-semibold rounded-lg hover:bg-indigo-600 hidden">Add Train Station</button>
-          <button id="reset-high-scores" class="w-full py-2 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-600 hidden">Export & Reset High Scores</button>
-          <button id="logout-button" class="w-full py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 hidden">Logout</button>
+          <button id="add-station-button" class="w-full py-2 bg-[#6DC7D1] text-white font-poppins rounded-lg hover:bg-[#5EAAB2] hidden">Add Train Station</button>
+          <button id="reset-high-scores" class="w-full py-2 bg-[#6DC7D1] text-white font-poppins rounded-lg hover:bg-[#5EAAB2] hidden">Export & Reset High Scores</button>
+          <button id="logout-button" class="w-full py-2 bg-[#6DC7D1] text-white font-poppins rounded-lg hover:bg-red-[#5EAAB2] hidden">Logout</button>
         </div>
       </div>
       <!-- Add Station Modal -->
       <div id="add-station-modal" class="hidden bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
         <div class="modal-header mb-4">
-          <h2 class="text-xl font-bold">Add Train Station:</h2>
+          <h2 class="text-xl font-poppins">Add Train Station:</h2>
         </div>
         <div class="modal-body space-y-4">
           <input type="text" id="station-name" placeholder="Enter station name" class="w-full p-2 border rounded-md" />
           <input type="file" id="station-image-upload" accept="image/*" class="w-full p-2 border rounded-md" />
-          <button id="add-station-submit" class="w-full py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">Add Station</button>
-          <button id="close-add-station-modal" class="w-full py-2 bg-gray-400 text-white rounded-lg hover:bg-gray-500">Cancel</button>
+          <button id="add-station-submit" class="w-full py-2 bg-[#6DC7D1] text-white rounded-lg hover:bg-[#5EAAB2]">Add Station</button>
+          <button id="close-add-station-modal" class="w-full py-2 bg-[#6DC7D1] text-white rounded-lg hover:bg-[#5EAAB2]">Cancel</button>
         </div>
       </div>
 
       <!-- Game Section -->
-      <h1 class="text-3xl font-bold text-center text-gray-700">Guess the Train Station!</h1>
+      <h1 class="text-3xl font-poppins text-center text-black">Guess the Train Station!</h1>
       <img id="station-image" src="" alt="Train Station" class="w-full max-w-md rounded-lg shadow-md mb-4" />
 
       <div class="flex flex-col items-center space-y-4 w-full max-w-md">
         <input type="text" id="user-guess" placeholder="Enter station name" class="w-full p-2 border rounded-md" />
-        <button id="submit-guess" class="w-full py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600">Submit Guess</button>
-        <p id="feedback" class="text-center text-lg text-gray-700"></p>
-        <p id="attempts" class="text-gray-500">Attempts left: <span id="attempts-left">3</span></p>
+        <button id="submit-guess" class="w-full py-2 bg-[#6DC7D1] text-white font-poppins rounded-lg hover:bg-[#5EAAB2]">Submit Guess</button>
+        <p id="feedback" class="text-center text-lg text-black"></p>
+        <p id="attempts" class="text-black font-poppins">Attempts left: <span id="attempts-left">3</span></p>
       </div>
 
       <!-- High Scores Section -->
       <div id="high-scores" class="hidden w-full max-w-md bg-white p-4 rounded-lg shadow-md">
-        <h2 class="text-lg font-bold mb-2">High Scores:</h2>
-        <ul id="high-scores-list" class="list-disc pl-5"></ul>
+        <h2 class="text-lg font-poppins mb-2">High Scores:</h2>
+        <ul id="high-scores-list" class="list-disc pl-5 font-poppins"></ul>
       </div>
 
       <!-- Name Modal -->
       <div id="name-modal" class="hidden bg-white p-4 rounded-lg shadow-md w-full max-w-md">
-        <p id="congrats" class="text-center text-lg text-green-600"></p>
-        <h2 class="text-xl font-semibold mb-2">Enter Your Name:</h2>
-        <input type="text" id="player-name" class="w-full p-2 border rounded-md mb-2" />
-        <button id="submit-name" class="w-full py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Submit</button>
+        <p id="congrats" class="text-center font-poppins text-lg text-black"></p>
+        <h2 class="text-xl font-poppins mb-2">Enter Your Name:</h2>
+        <input type="text" id="player-name" class="font-poppins w-full p-2 border rounded-md mb-2" />
+        <button id="submit-name" class="w-full py-2 bg-[#6DC7D1] text-white rounded-lg hover:bg-[#5EAAB2]">Submit</button>
       </div>
 
       

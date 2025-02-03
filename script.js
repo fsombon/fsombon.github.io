@@ -178,8 +178,12 @@ document.getElementById("reset-high-scores").addEventListener("click", () => {
     }
 });
 
+
 document.getElementById("add-station-button").addEventListener("click", () => {
-    document.getElementById("add-station-modal").style.display = "block";
+    document.getElementById("add-station-modal").classList.remove("hidden");
+});
+document.getElementById("close-add-station-modal").addEventListener("click", () => {
+    document.getElementById("add-station-modal").classList.add("hidden");
 });
 
 document.getElementById("add-station-submit").addEventListener("click", () => {
@@ -216,9 +220,6 @@ document.getElementById("toggle-side-menu").addEventListener("click", () => {
     sideMenu.classList.toggle("minimized");
 });
 
-document.getElementById("close-add-station-modal").addEventListener("click", () => {
-    document.getElementById("add-station-modal").style.display = "none";
-});
 
 
 
