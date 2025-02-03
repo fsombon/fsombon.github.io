@@ -88,6 +88,7 @@ function resetHighScores() {
 
 // Function to end the round
 function endRound() {
+    document.getElementById("end-round").play();
     document.getElementById("congrats").textContent = `Thank you for playing! Your score is ${score}.`;
     document.getElementById("name-modal").style.display = "block";
     document.getElementById("player-name").focus();
@@ -99,32 +100,7 @@ loadHighScores();
 // Load a new station on page load
 shuffleArray(stations);
 loadStation();
-/*
-// Add event listener to submit guess button
-document.getElementById("submit-guess").addEventListener("click", () => {
-    const userGuess = document.getElementById("user-guess").value.trim().toLowerCase();
-    const correctAnswer = stations[currentStationIndex].name.toLowerCase();
 
-    if (userGuess === correctAnswer) {
-        score++; // Increment score for correct guess
-        document.getElementById("feedback").textContent = "Correct! Next station.";
-        currentStationIndex++;
-        attemptsLeft = 3; // Reset attempts left
-        loadStation();
-    } else {
-        attemptsLeft--;
-        document.getElementById("feedback").textContent = "Incorrect! Try again.";
-        if (attemptsLeft === 0) {
-            document.getElementById("feedback").textContent = `Game Over! The station was ${stations[currentStationIndex].name}.`;
-            attemptsLeft = 3; // Reset attempts left
-            currentStationIndex++;
-            loadStation();
-        }
-    }
-    document.getElementById("attempts-left").textContent = attemptsLeft;
-    document.getElementById("user-guess").value = "";
-});
-*/
 // Add event listener to submit guess button
 document.getElementById("submit-guess").addEventListener("click", () => {
     const userGuess = document.getElementById("user-guess").value.trim().toLowerCase();
